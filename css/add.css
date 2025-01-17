@@ -1,0 +1,31 @@
+*{
+    padding: 0%;
+    margin: 0%;
+}
+body{
+    width: 100%;
+    overflow-x: hidden;
+
+}
+.image{
+    height: 200px;
+    width: 200px;
+    margin-left: 64vh;
+}
+
+.group img{
+    width: 40px;
+
+}.mr{
+    margin-left: 57vh;
+
+}.btn1{
+    margin-left: 80vh;
+
+}
+.ms5{
+    margin-left: 11rem !important;
+  }
+ /* .groupCard {
+    padding-left: 430px;
+ } */

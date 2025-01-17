@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>formulair</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+</head>
+<body class="container">
+    <main class=" row mt-3">
+        <section class="col-6">
+            <img class="w-100 h-100 d-inline-block" src="assets/images/personne.jpg" alt="personee">
+        </section>
+        <form class="col-6">
+            <div class="form-group">
+                <label for="nom">Nom</label>
+                <input type="text" class="form-control" id="nom" placeholder="Entrez votre nom" required>
+            </div>
+            <div class="form-group">
+                <label for="prenom">Prénom</label>
+                <input type="text" class="form-control" id="prenom" placeholder="Entrez votre prénom" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" id="email" placeholder="Entrez votre email" required>
+            </div>
+            <div class="form-group">
+                <label for="gender">Genre</label><br>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="gender" id="male" value="male" required>
+                    <label class="form-check-label" for="male">Homme</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="gender" id="female" value="female" required>
+                    <label class="form-check-label" for="female">Femme</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="ville">Ville</label>
+                <select class="form-control" id="ville" required>
+                    <option value="" disabled selected>Choisissez une ville</option>
+                    <option value="Casablanca">Casablanca</option>
+                    <option value="Casablanca">Beni Mallal</option>
+                    <option value="Rabat">Rabat</option>
+                    <option value="Tanger">Tanger</option>
+                    <option value="Agadir">Agadir</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="telephone">Téléphone</label>
+                <input type="tel" class="form-control" id="telephone" placeholder="Entrez votre numéro de téléphone" required>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block mt-1">Add</button>
+        </form>
+    </main>
+    <script src="js/bootstrap.min.js"></script>
+
+</body>
+</html>
