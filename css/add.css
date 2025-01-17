@@ -4,17 +4,28 @@
 }
 body{
     width: 100%;
+    overflow-x: hidden;
+
 }
 .image{
-    height: 250px;
-    width: 250px;
+    height: 200px;
+    width: 200px;
+    margin-left: 64vh;
 }
-.group img {
 
-
-}.group img{
+.group img{
     width: 40px;
 
-}.ms5{
+}.mr{
+    margin-left: 57vh;
+
+}.btn1{
+    margin-left: 80vh;
+
+}
+.ms5{
     margin-left: 11rem !important;
   }
+ /* .groupCard {
+    padding-left: 430px;
+ } */
