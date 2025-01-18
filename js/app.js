@@ -134,70 +134,93 @@ form.addEventListener('submit', (e) => {
 
 // ======================== validation des inputs ===================
 
-document.getElementById("myForm").addEventListener("submit", function (event) {
-    event.preventDefault();
-  
-    // Réinitialiser les erreurs
-    const errorFields = document.querySelectorAll(".error-message");
-    errorFields.forEach((field) => (field.textContent = ""));
-  
-    const inputs = document.querySelectorAll("input, select");
-    inputs.forEach((input) => input.classList.remove("error"));
-  
-    // Récupérer les champs
-    const nom = document.getElementById("nom").value.trim();
-    const prenom = document.getElementById("prenom").value.trim();
-    const email = document.getElementById("email").value.trim();
-    const genre = document.querySelector('input[name="genre"]:checked');
-    const ville = document.getElementById("ville").value;
-    const telephone = document.getElementById("telephone").value.trim();
-  
-    // Regex
-    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-    const phoneRegex = /^\d{10}$/;
-  
-    let isValid = true;
-  
-    // Validation
-    if (nom === "") {
-      document.getElementById("nomError").textContent = "Le nom est requis.";
-      document.getElementById("nom").classList.add("error");
-      isValid = false;
+
+
+function validation() {
+let isValid = true;
+
+// Recuperation des champ
+const imgInput = document.getElementById("imgInput");
+const userName = document.getElementById("nom");
+const userPrenom = document.getElementById("prenom");
+const email = document.getElementById("email");
+const genre = document.getElementsByName("genre");
+const ville = document.getElementById("ville");
+const telephone = document.getElementById("telephone");
+
+// Récuperation des messages d'erreur
+const nomError = document.getElementById("nomError");
+const prenomError = document.getElementById("prenomError");
+const emailError = document.getElementById("emailError");
+const genreError = document.getElementById("genreError");
+const villeError = document.getElementById("villeError");
+const telephoneError = document.getElementById("telephoneError");
+
+// Reinitialisation des messages d'erreur
+nomError.textContent = "";
+prenomError.textContent = "";
+emailError.textContent = "";
+genreError.textContent = "";
+villeError.textContent = "";
+telephoneError.textContent = "";
+
+// Validation du champ img
+if (!imgInput.value) {
+    alert("Veuillez sélectionner une image.");
+    isValid = false;
+}
+
+// Validation du nom 
+if (!userName.value.trim()) {
+    nomError.textContent = "Le nom est obligatoire.";
+    isValid = false;
+}
+
+// Validation du prénom 
+if (!userPrenom.value.trim()) {
+    prenomError.textContent = "Le prénom est obligatoire.";
+    isValid = false;
+}
+
+// Validation de l'email 
+const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+if (!email.value.trim()) {
+    emailError.textContent = "L'email est obligatoire.";
+    isValid = false;
+} else if (!emailRegex.test(email.value.trim())) {
+    emailError.textContent = "Le format de l'email est invalide.";
+    isValid = false;
+}
+
+// Validation du genre 
+let genreSelected = false;
+for (let i = 0; i < genre.length; i++) {
+    if (genre[i].checked) {
+        genreSelected = true;
+        break;
     }
-  
-    if (prenom === "") {
-      document.getElementById("prenomError").textContent = "Le prénom est requis.";
-      document.getElementById("prenom").classList.add("error");
-      isValid = false;
-    }
-  
-    if (!emailRegex.test(email)) {
-      document.getElementById("emailError").textContent = "Email invalide.";
-      document.getElementById("email").classList.add("error");
-      isValid = false;
-    }
-  
-    if (!genre) {
-      document.getElementById("genreError").textContent = "Sélectionnez un genre.";
-      isValid = false;
-    }
-  
-    if (ville === "") {
-      document.getElementById("villeError").textContent = "Sélectionnez une ville.";
-      document.getElementById("ville").classList.add("error");
-      isValid = false;
-    }
-  
-    if (!phoneRegex.test(telephone)) {
-      document.getElementById("telephoneError").textContent = "Téléphone invalide.";
-      document.getElementById("telephone").classList.add("error");
-      isValid = false;
-    }
-  
-    // Soumission
-    if (isValid) {
-      alert("Formulaire ajouté avec succès !");
-      this.submit();
-    }
-  });
-  
+}
+if (!genreSelected) {
+    genreError.textContent = "Veuillez sélectionner un genre.";
+    isValid = false;
+}
+
+// Validation de la ville 
+if (!ville.value) {
+    villeError.textContent = "Veuillez sélectionner une ville.";
+    isValid = false;
+}
+
+// Validation du téléphone 
+const telephoneRegex = /^\d{10}$/; // Numero just 10 chiffres
+if (!telephone.value.trim()) {
+    telephoneError.textContent = "Le téléphone est obligatoire.";
+    isValid = false;
+} else if (!telephoneRegex.test(telephone.value.trim())) {
+    telephoneError.textContent = "Le numéro de téléphone doit contenir 10 chiffres.";
+    isValid = false;
+}
+
+return isValid;
+}
+
