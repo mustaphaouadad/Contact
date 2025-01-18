@@ -129,3 +129,8 @@ form.addEventListener('submit', (e) => {
     form.reset();
     imgInput.src = "assets/images/Profile Icon.webp"
 });
+
+
+
+// ======================== validation des inputs ===================
+
