@@ -134,3 +134,70 @@ form.addEventListener('submit', (e) => {
 
 // ======================== validation des inputs ===================
 
+document.getElementById("myForm").addEventListener("submit", function (event) {
+    event.preventDefault();
+  
+    // Réinitialiser les erreurs
+    const errorFields = document.querySelectorAll(".error-message");
+    errorFields.forEach((field) => (field.textContent = ""));
+  
+    const inputs = document.querySelectorAll("input, select");
+    inputs.forEach((input) => input.classList.remove("error"));
+  
+    // Récupérer les champs
+    const nom = document.getElementById("nom").value.trim();
+    const prenom = document.getElementById("prenom").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const genre = document.querySelector('input[name="genre"]:checked');
+    const ville = document.getElementById("ville").value;
+    const telephone = document.getElementById("telephone").value.trim();
+  
+    // Regex
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    const phoneRegex = /^\d{10}$/;
+  
+    let isValid = true;
+  
+    // Validation
+    if (nom === "") {
+      document.getElementById("nomError").textContent = "Le nom est requis.";
+      document.getElementById("nom").classList.add("error");
+      isValid = false;
+    }
+  
+    if (prenom === "") {
+      document.getElementById("prenomError").textContent = "Le prénom est requis.";
+      document.getElementById("prenom").classList.add("error");
+      isValid = false;
+    }
+  
+    if (!emailRegex.test(email)) {
+      document.getElementById("emailError").textContent = "Email invalide.";
+      document.getElementById("email").classList.add("error");
+      isValid = false;
+    }
+  
+    if (!genre) {
+      document.getElementById("genreError").textContent = "Sélectionnez un genre.";
+      isValid = false;
+    }
+  
+    if (ville === "") {
+      document.getElementById("villeError").textContent = "Sélectionnez une ville.";
+      document.getElementById("ville").classList.add("error");
+      isValid = false;
+    }
+  
+    if (!phoneRegex.test(telephone)) {
+      document.getElementById("telephoneError").textContent = "Téléphone invalide.";
+      document.getElementById("telephone").classList.add("error");
+      isValid = false;
+    }
+  
+    // Soumission
+    if (isValid) {
+      alert("Formulaire ajouté avec succès !");
+      this.submit();
+    }
+  });
+  
