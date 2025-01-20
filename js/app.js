@@ -20,7 +20,7 @@ showInfo();
 
 newUserBtn.addEventListener('click', () => {
     submitBtn.innerText = 'Submit';
-    modalTitle.innerText = "Fill the Form";
+    modalTitle.innerText = "formulair contact";
     isEdit = false;
     imgInput.src = "assets/images/Profile Icon.webp"
     form.reset();
@@ -38,7 +38,7 @@ file.onchange = function(){
         fileReader.readAsDataURL(file.files[0])
     }
     else{
-        alert("This file is too large!")
+        alert("Ce fichier est trop volumineux !")
     }
 }
 function getSelectedGenre() {
@@ -86,12 +86,12 @@ function editInfo(index,pic, nom, prenom, emailVal, genreVal, villeVal, phoneVal
         input.checked = input.value === genreVal;
     }); 
 
-    submitBtn.innerText = "Update";
-    modalTitle.innerText = "Update The Form";
+    submitBtn.innerText = "Mise à jour";
+    modalTitle.innerText = "Mettre à jour le formulaire";
 }
 
 function deleteInfo(index) {
-    if (confirm("Are you sure want to delete?")) {
+    if (confirm("Etes-vous sûr de vouloir supprimer ?")) {
         getData.splice(index, 1);
         localStorage.setItem("userProfile", JSON.stringify(getData));
         showInfo();
@@ -103,7 +103,7 @@ form.addEventListener('submit', (e) => {
 
     const selectedGenre = getSelectedGenre();
     if (!selectedGenre) {
-        alert("Please select a gender.");
+        alert("Veuillez sélectionner un sexe.");
         return;
     }
     const information = {
@@ -124,7 +124,7 @@ form.addEventListener('submit', (e) => {
 
     localStorage.setItem('userProfile', JSON.stringify(getData));
     submitBtn.innerText = "Submit";
-    modalTitle.innerHTML = "Fill The Form";
+    modalTitle.innerHTML = "formulair contact";
     showInfo();
     form.reset();
     imgInput.src = "assets/images/Profile Icon.webp"
