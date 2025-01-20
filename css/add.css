@@ -26,6 +26,30 @@ body{
 .ms5{
     margin-left: 11rem !important;
   }
- /* .groupCard {
-    padding-left: 430px;
- } */
+ 
+  @media screen and (max-width:900px) {
+    .image {
+        height: 200px;
+        width: 200px;
+        margin-left: 17vh;
+    }.mr {
+        margin-left: 9vh;
+    }.btn1 {
+        margin-left: 38vh;
+    }.groupCard {
+        padding-top: 67px;
+
+    }
+}
+@media screen and (max-width:600px){
+    .image {
+        height: 200px;
+        width: 200px;
+        margin-left: 4vh;
+    }.mr {
+        margin-left: 3vh;
+    }
+    .btn1 {
+        margin-left: 26vh;
+    }
+}

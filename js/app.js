@@ -129,3 +129,98 @@ form.addEventListener('submit', (e) => {
     form.reset();
     imgInput.src = "assets/images/Profile Icon.webp"
 });
+
+
+
+// ======================== validation des inputs ===================
+
+
+
+function validation() {
+let isValid = true;
+
+// Recuperation des champ
+const imgInput = document.getElementById("imgInput");
+const userName = document.getElementById("nom");
+const userPrenom = document.getElementById("prenom");
+const email = document.getElementById("email");
+const genre = document.getElementsByName("genre");
+const ville = document.getElementById("ville");
+const telephone = document.getElementById("telephone");
+
+// Récuperation des messages d'erreur
+const nomError = document.getElementById("nomError");
+const prenomError = document.getElementById("prenomError");
+const emailError = document.getElementById("emailError");
+const genreError = document.getElementById("genreError");
+const villeError = document.getElementById("villeError");
+const telephoneError = document.getElementById("telephoneError");
+
+// Reinitialisation des messages d'erreur
+nomError.textContent = "";
+prenomError.textContent = "";
+emailError.textContent = "";
+genreError.textContent = "";
+villeError.textContent = "";
+telephoneError.textContent = "";
+
+// Validation du champ img
+if (!imgInput.value) {
+    alert("Veuillez sélectionner une image.");
+    isValid = false;
+}
+
+// Validation du nom 
+if (!userName.value.trim()) {
+    nomError.textContent = "Le nom est obligatoire.";
+    isValid = false;
+}
+
+// Validation du prénom 
+if (!userPrenom.value.trim()) {
+    prenomError.textContent = "Le prénom est obligatoire.";
+    isValid = false;
+}
+
+// Validation de l'email 
+const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+if (!email.value.trim()) {
+    emailError.textContent = "L'email est obligatoire.";
+    isValid = false;
+} else if (!emailRegex.test(email.value.trim())) {
+    emailError.textContent = "Le format de l'email est invalide.";
+    isValid = false;
+}
+
+// Validation du genre 
+let genreSelected = false;
+for (let i = 0; i < genre.length; i++) {
+    if (genre[i].checked) {
+        genreSelected = true;
+        break;
+    }
+}
+if (!genreSelected) {
+    genreError.textContent = "Veuillez sélectionner un genre.";
+    isValid = false;
+}
+
+// Validation de la ville 
+if (!ville.value) {
+    villeError.textContent = "Veuillez sélectionner une ville.";
+    isValid = false;
+}
+
+// Validation du téléphone 
+const telephoneRegex = /^\d{10}$/; // Numero just 10 chiffres
+if (!telephone.value.trim()) {
+    telephoneError.textContent = "Le téléphone est obligatoire.";
+    isValid = false;
+} else if (!telephoneRegex.test(telephone.value.trim())) {
+    telephoneError.textContent = "Le numéro de téléphone doit contenir 10 chiffres.";
+    isValid = false;
+}
+
+return isValid;
+}
+

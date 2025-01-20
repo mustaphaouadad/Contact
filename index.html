@@ -1,106 +1,204 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-    <title>Contact</title>
-    <link rel="stylesheet" href="css/style.css">
-  </head>
-  <body>
-    <section class="p-3">
-        <div class="row">
-            <div class="col-12">
-                <button class="btn btn-primary newUser" data-bs-toggle="modal" data-bs-target="#userForm">Ajouter un contact <i class="bi bi-people"></i></button>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-12">
-                <table class="table table-striped table-hover mt-3 text-center table-bordered">
-                    <thead>
-                        <tr>
-                            <th>id</th>
-                            <th>Photo</th>
-                            <th>Nom</th>
-                            <th>Prénom</th>
-                            <th>Email</th>
-                            <th>Genre</th>
-                            <th>Ville</th>
-                            <th>Téléphone</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody id="data"></tbody>
-                </table>
-            </div>
-        </div>
-    </section>
-
-    <!--Modal Form-->
-   <!-- --------------- -->
-    <div class="modal fade" id="userForm">
-        <div class="modal-dialog modal-dialog-centered modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title">list contact</h4>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form id="myForm">
-                        <div class="card imgholder">
-                            <label for="imgInput" class="upload">
-                                <input type="file" name="" id="imgInput">
-                                <i class="bi bi-plus-circle-dotted"></i>
-                            </label>
-                            <img src="assets/images/Profile Icon.webp" alt="" width="200" height="200" class="img">
-                        </div>
-                        <div class="inputField">
-                        <div class="">
-                            <label for="nom" class="form-label">Nom:</label>
-                            <input type="text" id="nom" class="form-control" required>
-                        </div>
-                        <div >
-                            <label for="prenom" class="form-label">Prénom:</label>
-                            <input type="text" id="prenom" class="form-control" required>
-                        </div>
-                        <div >
-                            <label for="email" class="form-label">Email:</label>
-                            <input type="email" id="email" class="form-control" required>
-                        </div>
-                        <div >
-                            <label class="form-label">Genre:</label><br>
-                            <input type="radio" id="male" name="genre" value="Homme" required>
-                            <label for="male">Homme</label>
-                            <input type="radio" id="female" name="genre" value="Femme">
-                            <label for="female">Femme</label>
-                        </div>
-                        <div >
-                            <label for="ville" class="form-label">Ville:</label>
-                            <select id="ville" class="form-select" required>
-                                <option value="">Choisir...</option>
-                                <option value="Casablanca">Casablanca</option>
-                                <option value="Rabat">Rabat</option>
-                                <option value="Marrakech">Marrakech</option>
-                                <option value="Fès">Fès</option>
-                            </select>
-                        </div>
-                        <div >
-                            <label for="telephone" class="form-label">Téléphone:</label>
-                            <input type="text" id="telephone" class="form-control" minlength="10" maxlength="10" pattern="\d{10}" required>
-                        </div>
-                    </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
-                    <button type="submit" form="myForm" class="btn btn-primary submit">Ajouter</button>
-                </div>
-            </div>
-        </div>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+  <title>Contact</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <section class="p-3">
+    <div class="row">
+      <div class="col-12">
+        <button class="btn btn-primary newUser" data-bs-toggle="modal" data-bs-target="#userForm">Ajouter un contact <i class="bi bi-people"></i></button>
+        <button class="btn btn-success newUser" onclick="document.location='add.html'">Home <i class="bi bi-house"></i></button>
+      </div>
     </div>
+    <div class="row">
+      <div class="col-12">
+        <table class="table table-striped table-hover mt-3 text-center table-bordered">
+          <thead>
+            <tr>
+              <th>id</th>
+              <th>Photo</th>
+              <th>Nom</th>
+              <th>Prénom</th>
+              <th>Email</th>
+              <th>Genre</th>
+              <th>Ville</th>
+              <th>Téléphone</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody id="data"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    <script src="js/app.js"></script>
-  </body>
+  <!-- Modal Form -->
+  <div class="modal fade" id="userForm">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Ajouter un utilisateur</h4>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="myForm" >
+            <div class="card imgholder">
+              <label for="imgInput" class="upload">
+                <input type="file" name="" id="imgInput">
+                <i class="bi bi-plus-circle-dotted"></i>
+              </label>
+              <img src="assets/images/Profile Icon.webp" alt="Image" width="200" height="200" class="img">
+            </div>
+            <div class="inputField">
+              <div>
+                <label for="nom" class="form-label">Nom:</label>
+                <input type="text" id="nom" class="form-control">
+                <span class="error-message" id="nomError"></span>
+              </div>
+              <div>
+                <label for="prenom" class="form-label">Prénom:</label>
+                <input type="text" id="prenom" class="form-control">
+                <span class="error-message" id="prenomError"></span>
+              </div>
+              <div>
+                <label for="email" class="form-label">Email:</label>
+                <input type="email" id="email" class="form-control">
+                <span class="error-message" id="emailError"></span>
+              </div>
+              <div>
+                <label class="form-label">Genre:</label><br>
+                <input type="radio" id="male" name="genre" value="Homme">
+                <label for="male">Homme</label>
+                <input type="radio" id="female" name="genre" value="Femme">
+                <label for="female">Femme</label>
+                <span class="error-message" id="genreError"></span>
+              </div>
+              <div>
+                <label for="ville" class="form-label">Ville:</label>
+                <select id="ville" class="form-select">
+                  <option value="">Choisir...</option>
+                  <option value="Casablanca">Casablanca</option>
+                  <option value="beni mallal">Beni Mellal</option>
+                  <option value="Rabat">Rabat</option>
+                  <option value="Marrakech">Marrakech</option>
+                  <option value="Fès">Fès</option>
+                </select>
+                <span class="error-message" id="villeError"></span>
+              </div>
+              <div>
+                <label for="telephone" class="form-label">Téléphone:</label>
+                <input type="text" id="telephone" class="form-control">
+                <span class="error-message" id="telephoneError"></span>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+          <button type="submit" onclick="return validation()" form="myForm" class="btn btn-primary submit">Ajouter</button>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    function validation() {
+    let isValid = true;
+
+    // Récupération des champs
+    const imgInput = document.getElementById("imgInput");
+    const userName = document.getElementById("nom");
+    const userPrenom = document.getElementById("prenom");
+    const email = document.getElementById("email");
+    const genre = document.getElementsByName("genre");
+    const ville = document.getElementById("ville");
+    const telephone = document.getElementById("telephone");
+
+    // Récupération des messages d'erreur
+    const nomError = document.getElementById("nomError");
+    const prenomError = document.getElementById("prenomError");
+    const emailError = document.getElementById("emailError");
+    const genreError = document.getElementById("genreError");
+    const villeError = document.getElementById("villeError");
+    const telephoneError = document.getElementById("telephoneError");
+
+    // Réinitialisation des messages d'erreur
+    nomError.textContent = "";
+    prenomError.textContent = "";
+    emailError.textContent = "";
+    genreError.textContent = "";
+    villeError.textContent = "";
+    telephoneError.textContent = "";
+
+    // Validation du champ image
+    if (!imgInput.value) {
+        alert("Veuillez sélectionner une image.");
+        isValid = false;
+    }
+
+    // Validation du nom (obligatoire)
+    if (!userName.value.trim()) {
+        nomError.textContent = "Le nom est obligatoire.";
+        isValid = false;
+    }
+
+    // Validation du prénom (obligatoire)
+    if (!userPrenom.value.trim()) {
+        prenomError.textContent = "Le prénom est obligatoire.";
+        isValid = false;
+    }
+
+    // Validation de l'email (format)
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!email.value.trim()) {
+        emailError.textContent = "L'email est obligatoire.";
+        isValid = false;
+    } else if (!emailRegex.test(email.value.trim())) {
+        emailError.textContent = "Le format de l'email est invalide.";
+        isValid = false;
+    }
+
+    // Validation du genre (radio button)
+    let genreSelected = false;
+    for (let i = 0; i < genre.length; i++) {
+        if (genre[i].checked) {
+            genreSelected = true;
+            break;
+        }
+    }
+    if (!genreSelected) {
+        genreError.textContent = "Veuillez sélectionner un genre.";
+        isValid = false;
+    }
+
+    // Validation de la ville (select)
+    if (!ville.value) {
+        villeError.textContent = "Veuillez sélectionner une ville.";
+        isValid = false;
+    }
+
+    // Validation du téléphone (format et longueur)
+    const telephoneRegex = /^\d{10}$/; // Numéro à 10 chiffres
+    if (!telephone.value.trim()) {
+        telephoneError.textContent = "Le téléphone est obligatoire.";
+        isValid = false;
+    } else if (!telephoneRegex.test(telephone.value.trim())) {
+        telephoneError.textContent = "Le numéro de téléphone doit contenir 10 chiffres.";
+        isValid = false;
+    }
+
+    return isValid;
+}
+
+  </script>
+</body>
 </html>
